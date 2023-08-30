@@ -15,7 +15,8 @@ set(CMAKE_CXX_STANDARD 17)
 add_executable(${PROJECT_NAME}
     src/main.cpp
     src/main.qrc
-    src/main.qml
+#    src/main.qml
+#    src/templates/MyTextField.qml
 )
 
 target_link_libraries(${PROJECT_NAME} PRIVATE

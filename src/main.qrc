@@ -1,5 +1,7 @@
 <RCC>
-    <qresource>
+    <qresource prefix="/">
         <file>main.qml</file>
+        <file>templates/Button.qml</file>
+        <file>templates/TextField.qml</file>
     </qresource>
 </RCC>

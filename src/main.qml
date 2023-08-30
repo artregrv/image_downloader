@@ -2,14 +2,20 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 
+import "qrc:templates"
+
 ApplicationWindow {
 	id: applicationWindow
 	width: 800
 	height: 480
 	visible: true
 
-	property int controlsHeight: 50
+    property int controlsHeight: 50
 	property int controlsSpacing: 20
+    property int textFieldWidth: 500
+    property int horisontalSpacing: (applicationWindow.width - textFieldWidth) / 2
+    property int verticalSpacing: (applicationWindow.height
+                                   - (controlsHeight * 2 + controlsSpacing)) / 2
 
 	Rectangle {
 		anchors.fill: parent
@@ -41,24 +47,24 @@ ApplicationWindow {
 					Layout.alignment: Qt.AlignVCenter
 					spacing: 20
 
-					TextField {
-						Layout.preferredWidth: 500
-						Layout.preferredHeight: 50
+                    TextField {
+                        Layout.preferredWidth: textFieldWidth
+                        Layout.preferredHeight: controlsHeight
 					}
-					TextField {
-						Layout.preferredWidth: 500
-						Layout.preferredHeight: 50
+                    TextField {
+                        Layout.preferredWidth: textFieldWidth
+                        Layout.preferredHeight: controlsHeight
 					}				
 				}
 				ColumnLayout {
 					Layout.preferredWidth: 500
-					Layout.preferredHeight: (applicationWindow.height
-						- (controlsHeight * 2 + controlsSpacing)) / 2
+                    Layout.preferredHeight: verticalSpacing
 					Button {
 						Layout.preferredWidth: 200
-						Layout.preferredHeight: 50
+                        Layout.preferredHeight: controlsHeight
 						Layout.topMargin: 20
 						Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
+                        text: qsTr("Download")
 					}
 				}
 			}
@@ -67,26 +73,21 @@ ApplicationWindow {
 				spacing: 0
 
 				ColumnLayout {
-					Layout.preferredHeight: (applicationWindow.height
-						- (controlsHeight * 2 + controlsSpacing)) / 2
-					Component.onCompleted: console.log(height)
+                    Layout.preferredHeight: verticalSpacing
 				}
 				ColumnLayout {
 					Layout.preferredHeight: controlsHeight * 2 + controlsSpacing
+
 					Button {
 						Layout.preferredWidth: 100
-						Layout.preferredHeight: 50
+                        Layout.preferredHeight: controlsHeight
 						Layout.leftMargin: 20
 						Layout.alignment: Qt.AlignLeft | Qt.AlignBottom
+                        text: qsTr("Open")
 					}
-					Component.onCompleted: console.log(height)
 				}
 				ColumnLayout {
-					Layout.preferredHeight: (applicationWindow.height
-						- (controlsHeight * 2 + controlsSpacing)) / 2
-	
-					Component.onCompleted: console.log(applicationWindow.height,
-						Layout.preferredHeight)	
+                    Layout.preferredHeight: verticalSpacing
 				}
 			}
 		}	
