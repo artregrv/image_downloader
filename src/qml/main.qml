@@ -2,7 +2,7 @@ import QtQuick
 import QtQuick.Controls
 import QtQuick.Layouts
 
-import "qrc:templates"
+import "qrc:qml/templates"
 
 ApplicationWindow {
 	id: applicationWindow
@@ -48,23 +48,35 @@ ApplicationWindow {
 					spacing: 20
 
                     TextField {
+                        id: imageUrlField
                         Layout.preferredWidth: textFieldWidth
                         Layout.preferredHeight: controlsHeight
+                        onEditingFinished: {
+                            downloader.imageUrl = imageUrlField.text
+                        }
 					}
                     TextField {
+                        id: savePathField
                         Layout.preferredWidth: textFieldWidth
                         Layout.preferredHeight: controlsHeight
+                        onEditingFinished: {
+                            downloader.savePath = savePathField.text
+                        }
 					}				
 				}
 				ColumnLayout {
 					Layout.preferredWidth: 500
                     Layout.preferredHeight: verticalSpacing
+
 					Button {
 						Layout.preferredWidth: 200
                         Layout.preferredHeight: controlsHeight
 						Layout.topMargin: 20
 						Layout.alignment: Qt.AlignHCenter | Qt.AlignTop
                         text: qsTr("Download")
+                        onClicked: {
+                            downloader.download()
+                        }
 					}
 				}
 			}
