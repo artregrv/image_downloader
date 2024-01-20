@@ -1,2 +1,2 @@
 # image_downloader
-Simple application for downloading images usign Qt/QML
+Simple application for downloading images using Qt/QML
